@@ -55,6 +55,8 @@ const futureId = 9
 
 console.log((holidays && 9 && name) || `ID ${futureId} not created yet`)
 
+/* The code below creates a copy of the holidays[6] object such that changes made 
+to the object copy do not apply to the original object */
 let copied = JSON.parse(JSON.stringify(holidays[6]) )
 copied.name = 'X-mas Day'
 
@@ -64,13 +66,7 @@ correctDate.setMinutes(0);
 
 isEarlier = correctDate.getTime() < holidays[6].date.getTime()
 console.log('New date is earlier:', isEarlier)
-console.log(correctDate)
-console.log(holidays[6].date)
-
 if (isEarlier) copied.date = correctDate
-
-console.log(holidays[6])
-console.log(copied)
 
 if (holidays[6].id == copied.id) {
     console.log('ID change:', Boolean(0))
@@ -90,11 +86,10 @@ if (holidays[6].date == copied.date) {
     console.log('ID change:', Boolean(0))
     }
     else {
-        console.log('Date change:', copied.date)
+        console.log('Date change:', `${copied.date.getDate()}/${copied.date.getMonth()+1}/${currentYear}`)
     }
 
 holidays[0].date = new Date(`16 December ${currentYear}`)
-console.log(holidays[0])
 
 let holidayTimestamps = [
 holidays[0].date.getTime(),
@@ -108,12 +103,9 @@ holidays[7].date.getTime(),
 holidays[8].date.getTime()
 ]
 
+/* The variables below are the index of the earliest and latest dates respectively in the holidayTimestamps array  */
 let firstHolidayTimestampIndex = holidayTimestamps.indexOf(Math.min(...holidayTimestamps));
-
 let lastHolidayTimestampIndex = holidayTimestamps.indexOf(Math.max(...holidayTimestamps));
-
-console.log(holidays[6].date)
-console.log(holidays[firstHolidayTimestampIndex])
 
 const firstDay = holidays[firstHolidayTimestampIndex].date.getDate();
 const firstMonth = holidays[firstHolidayTimestampIndex].date.getMonth()+1;
@@ -124,8 +116,8 @@ const firstMonthText = firstMonth.toString();
 
 console.log(`${firstDayText.padStart(2,'0')}/${firstMonthText.padStart(2,'0')}/${currentYear}`)
 console.log(`${lastDay}/${lastMonth}/${currentYear}`)
-let randomHolidayid = Math.floor(Math.random()*9);
 
+let randomHolidayid = Math.floor(Math.random()*9);
 const randomHolDay = holidays[randomHolidayid].date.getDate();
 const randomHolMonth = holidays[randomHolidayid].date.getMonth()+1;
 const randomHolDayText = randomHolDay.toString();
