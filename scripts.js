@@ -53,7 +53,7 @@ const futureId = 9
 
 // Do not change code above this comment
 
-console.log((holidays && 9 && name) || `ID ${futureId} not created yet`)
+console.log((holidays[futureId] && holidays[futureId].name) || `ID ${futureId} not created yet`)
 
 /* The code below creates a copy of the holidays[6] object such that changes made 
 to the object copy do not apply to the original object */
